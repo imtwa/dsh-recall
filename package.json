@@ -1,0 +1,50 @@
+{
+  "name": "dsh-recall",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 跨会话记忆（按需）：列出并加载之前会话干了什么，不自动污染上下文。Cross-session memory for DSH, loaded on demand.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "test",
+    "scripts",
+    "cordis.patch.yml",
+    "README.md",
+    "PUBLISHING.md"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "dsh-plugins",
+    "deepseek-harness",
+    "cross-session-memory",
+    "session-recall",
+    "context",
+    "memory",
+    "recall"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "engines": {
+    "node": ">=20.11",
+    "dsh": ">=0.1.0-rc.1"
+  },
+  "dshTarget": "0.2.0-rc.2",
+  "scripts": {
+    "test": "node test/smoke.mjs",
+    "sync": "node scripts/sync.mjs",
+    "sync:check": "node scripts/sync.mjs --check",
+    "prepublishOnly": "node test/smoke.mjs"
+  }
+}
