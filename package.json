@@ -14,7 +14,8 @@
     "scripts",
     "cordis.patch.yml",
     "README.md",
-    "PUBLISHING.md"
+    "PUBLISHING.md",
+    "LICENSE"
   ],
   "license": "MIT",
   "keywords": [

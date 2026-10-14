@@ -45,7 +45,7 @@ function resolveTarget() {
 }
 
 const DST = resolveTarget();
-const FILES = ["package.json", "cordis.patch.yml", "README.md", "PUBLISHING.md"];
+const FILES = ["package.json", "cordis.patch.yml", "README.md", "PUBLISHING.md", "LICENSE"];
 const DIRS = ["lib", "test", "scripts"];
 
 const checkOnly = process.argv.includes("--check");

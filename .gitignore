@@ -1,0 +1,5 @@
+node_modules/
+.tmp-selftest/
+.api-check/
+.catalog-plugins.json
+*.log
