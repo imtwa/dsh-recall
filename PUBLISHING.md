@@ -54,10 +54,10 @@ DSH 版本。**只声明 cordis peer 的插件会被标成「未声明宿主要�
 # data/plugins/<owner>__<repo>.yml
 url: https://github.com/<owner>/dsh-recall-sessions   # 必须与仓库地址完全一致
 name: <owner>/dsh-recall-sessions                     # 列表里显示的链接文字
-category: memory
+category: session
 description:
-  en: Cross-session memory for DeepSeek Harness, loaded on demand: list and load what earlier sessions did without polluting the current context.
-  zh: DeepSeek Harness 跨会话记忆（按需）：列出并加载之前会话干了什么，不自动污染上下文。
+  en: 'A lightweight plugin that decompresses and reads past sessions, so a new session can read what an earlier conversation contained, in milliseconds per read. `/recall` lists the sessions of the current project with title, last activity, turn count and first prompt; `/recall <number>` reads back the turns of that session; `/recall all` covers every project; the model can also be asked in natural language to query with the `recall_sessions` tool.'
+  zh: 轻量级解压并读取历史会话，让新会话读取之前会话的内容，单次操作毫秒级。`/recall` 列出当前项目的历史会话（标题、最后活动时间、轮次、首问）；`/recall <序号>` 读回该会话的轮次内容；`/recall all` 覆盖所有项目；也可用自然语言让模型调用 `recall_sessions` 工具查询。
 ```
 
 要点：
@@ -65,7 +65,7 @@ description:
 - **只有 `description.en` 必填**；写不了中文可以只留 `en`，维护者会补。
 - 描述里出现半角冒号加空格（`: `）必须给整个值加引号，否则 YAML 会被解析成嵌套键。
   中文全角冒号没这个问题。
-- `category` 选贴合实际功能的那个，本插件用 `memory`。可选值：
+- `category` 选贴合实际功能的那个，本插件用 `session`。可选值：
   `agi ui usage theme model identity session memory tools wsl browser vision voice docs skill workflow git notify dev security remote market fun`。
 - README 是**脚本生成的**，别手改；只改自己那个 yml。
 - **一个 PR 最多 3 条**，超过会被 CI 拒。

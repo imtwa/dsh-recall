@@ -1,7 +1,7 @@
 {
   "name": "dsh-recall-sessions",
   "version": "0.1.0",
-  "description": "DeepSeek Harness 跨会话记忆（按需）：列出并加载之前会话干了什么，不自动污染上下文。Cross-session memory for DSH, loaded on demand.",
+  "description": "轻量级解压并读取历史会话，让新会话读取之前会话的内容，单次操作毫秒级。A lightweight plugin that decompresses and reads past sessions, in milliseconds per read.",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
