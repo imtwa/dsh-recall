@@ -7,7 +7,7 @@
  * macOS / Linux 上同样可用，只是那边直接 `link:` 仓库目录也没问题。
  *
  * 用法：
- *   node scripts/sync.mjs                      # 同步到 <DSH_HOME>/plugins/dsh-recall
+ *   node scripts/sync.mjs                      # 同步到 <DSH_HOME>/plugins/dsh-recall-sessions
  *   node scripts/sync.mjs --check              # 只比对，不写
  *   node scripts/sync.mjs --target /some/dir   # 指定目标目录
  *   DSH_HOME=/custom/.dsh node scripts/sync.mjs
@@ -41,7 +41,7 @@ function resolveTarget() {
   if (index >= 0 && argv[index + 1]) return path.resolve(argv[index + 1]);
   const inline = argv.find((arg) => arg.startsWith("--target="));
   if (inline) return path.resolve(inline.slice("--target=".length));
-  return path.join(resolveHome(), "plugins", "dsh-recall");
+  return path.join(resolveHome(), "plugins", "dsh-recall-sessions");
 }
 
 const DST = resolveTarget();

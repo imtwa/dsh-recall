@@ -1,4 +1,4 @@
-# dsh-recall bundle patch
+# dsh-recall-sessions bundle patch
 #
 # 这个文件由 DSH 的 dsh-plugin-manager 读取（package.json 里 `dsh.bundle.patch` 指向它），
 # 内容会作为一个「补丁层」追加到 profile 的 cordis 层栈末尾。
@@ -8,8 +8,8 @@
 #
 # 这里只做一件事：把自己插进层栈。
 - insert:
-    - id: dsh-recall
-      name: 'dsh-recall'
+    - id: dsh-recall-sessions
+      name: 'dsh-recall-sessions'
       config:
         enabled: true
         # 默认按需加载：不自动把历史会话塞进上下文。

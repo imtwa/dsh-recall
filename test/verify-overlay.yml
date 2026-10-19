@@ -1,4 +1,4 @@
-# 临时 overlay：只为验证 dsh-recall 是否真的把跨会话记忆注入了系统提示词。
+# 临时 overlay：只为验证 dsh-recall-sessions 是否真的把跨会话记忆注入了系统提示词。
 #
 # headless profile 默认走 deepseek-official，需要 DEEPSEEK_API_KEY；
 # 如果没有那个环境变量，可以把这段改成指向一个本机已配好凭证的 provider。

@@ -1,5 +1,5 @@
 # 验证 autoInject=true 时确实会注入跨会话记忆。
-# 注意：不是 insert 一个新实例，而是覆盖 profile 里已有 dsh-recall 条目的 config
+# 注意：不是 insert 一个新实例，而是覆盖 profile 里已有 dsh-recall-sessions 条目的 config
 # （insert 同名插件会撞 "command recall is already registered"）。
 #
 # 用法：
@@ -7,7 +7,7 @@
 #     --patch <verify-overlay.yml> \
 #     --patch <本文件> \
 #     "只回答两个字：收到"
-- id: dsh-recall
+- id: dsh-recall-sessions
   config:
     enabled: true
     autoInject: true

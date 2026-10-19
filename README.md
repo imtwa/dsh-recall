@@ -1,8 +1,8 @@
-# dsh-recall
+# dsh-recall-sessions
 
 > DeepSeek Harness（DSH）跨会话记忆插件：**按需**查看之前的会话干了什么。
 
-DSH 每个会话都是独立的，新开会话时模型对之前的对话一无所知。dsh-recall 把本机的历史会话
+DSH 每个会话都是独立的，新开会话时模型对之前的对话一无所知。dsh-recall-sessions 把本机的历史会话
 做成可检索、可加载的资源：需要的时候列个清单、指定一个会话读进来，
 **不会**自作主张把整个项目的历史塞进上下文。
 
@@ -21,7 +21,7 @@ DSH 内置了 `@deepseek-ai/dsh-session-reference`，但它要求你在消息里
 才会把那个会话的快照作为一条 `## Referenced sessions` 消息插进来，最多 3 个引用，
 只能靠投影里的标题找会话，不能按正文检索。
 
-dsh-recall 补的是这个空缺：**按序号或 id 片段检索，指定了才加载**，不受当前项目限制
+dsh-recall-sessions 补的是这个空缺：**按序号或 id 片段检索，指定了才加载**，不受当前项目限制
 （`/recall all` 能列出全机所有项目的会话）。两者可以同时用，不冲突。
 
 ---
@@ -89,7 +89,7 @@ AI：少配了静态资源目录，把 publicDir 指到构建输出就行……
 
 ### 通用步骤
 
-1. 把本仓库放到一个**固定目录**（macOS 上比如 `~/dev/dsh-recall`，
+1. 把本仓库放到一个**固定目录**（macOS 上比如 `~/dev/dsh-recall-sessions`，
    Windows 上建议放 **C 盘**，原因见下面的坑）。
 2. 在 profile 的 `package.json` 里加依赖与 bundle。
 3. 重启 dsh。
@@ -99,7 +99,7 @@ AI：少配了静态资源目录，把 publicDir 指到构建输出就行……
 ```bash
 cd ~/.dsh/profiles/web
 # 用 dsh 自带命令（推荐）
-dsh plugin --profile web add link:~/dev/dsh-recall
+dsh plugin --profile web add link:~/dev/dsh-recall-sessions
 ```
 
 或者手改 `~/.dsh/profiles/web/package.json`：
@@ -107,14 +107,14 @@ dsh plugin --profile web add link:~/dev/dsh-recall
 ```json
 {
   "dependencies": {
-    "dsh-recall": "link:/Users/你的用户名/dev/dsh-recall"
+    "dsh-recall-sessions": "link:/Users/你的用户名/dev/dsh-recall-sessions"
   },
   "dsh": {
     "profile": {
       "bundles": [
         "@deepseek-ai/dsh-base",
         "@deepseek-ai/dsh-web-app",
-        "dsh-recall"
+        "dsh-recall-sessions"
       ]
     }
   }
@@ -126,7 +126,7 @@ dsh plugin --profile web add link:~/dev/dsh-recall
 ### Windows
 
 ```powershell
-dsh plugin --profile web add link:C:/Users/你的用户名/.dsh/plugins/dsh-recall
+dsh plugin --profile web add link:C:/Users/你的用户名/.dsh/plugins/dsh-recall-sessions
 ```
 
 手改 `C:\Users\你的用户名\.dsh\profiles\web\package.json` 同理。
@@ -134,7 +134,7 @@ dsh plugin --profile web add link:C:/Users/你的用户名/.dsh/plugins/dsh-reca
 改完源码之后，用仓库自带的同步脚本把改动推到这个 C 盘副本（跨平台通用）：
 
 ```bash
-node scripts/sync.mjs            # 同步到 <DSH_HOME>/plugins/dsh-recall
+node scripts/sync.mjs            # 同步到 <DSH_HOME>/plugins/dsh-recall-sessions
 node scripts/sync.mjs --check    # 只比对，不改文件
 node scripts/sync.mjs --target /custom/dir
 ```
@@ -157,16 +157,16 @@ macOS / Linux 上如果 profile 直接 `link:` 仓库目录，就不需要这一
 重启 dsh 后，启动日志里应该能看到：
 
 ```
-[dsh-recall] autoInject=false：不自动注入历史会话。用 /recall 查看清单、/recall <序号|id> 加载指定会话，或让模型调 recall_sessions 工具按需拉取。
-[dsh-recall] 已注册 /recall 命令
-[dsh-recall] 已注册 recall_sessions 工具
-[dsh-recall] 加载完成：cwd=... DSH 主目录=... autoInject=false ...
+[dsh-recall-sessions] autoInject=false：不自动注入历史会话。用 /recall 查看清单、/recall <序号|id> 加载指定会话，或让模型调 recall_sessions 工具按需拉取。
+[dsh-recall-sessions] 已注册 /recall 命令
+[dsh-recall-sessions] 已注册 recall_sessions 工具
+[dsh-recall-sessions] 加载完成：cwd=... DSH 主目录=... autoInject=false ...
 ```
 
 或者用 dump-config 检查层栈：
 
 ```bash
-dsh --profile web --dump-config | grep -A 12 'dsh-recall'
+dsh --profile web --dump-config | grep -A 12 'dsh-recall-sessions'
 ```
 
 ---

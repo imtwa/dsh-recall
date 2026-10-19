@@ -52,8 +52,8 @@ DSH 版本。**只声明 cordis peer 的插件会被标成「未声明宿主要�
 
 ```yaml
 # data/plugins/<owner>__<repo>.yml
-url: https://github.com/<owner>/dsh-recall   # 必须与仓库地址完全一致
-name: <owner>/dsh-recall                     # 列表里显示的链接文字
+url: https://github.com/<owner>/dsh-recall-sessions   # 必须与仓库地址完全一致
+name: <owner>/dsh-recall-sessions                     # 列表里显示的链接文字
 category: memory
 description:
   en: Cross-session memory for DeepSeek Harness, loaded on demand: list and load what earlier sessions did without polluting the current context.
@@ -83,8 +83,8 @@ description:
 
    ```yaml
    - insert:
-       - id: dsh-recall
-         name: 'dsh-recall'
+       - id: dsh-recall-sessions
+         name: 'dsh-recall-sessions'
    ```
 
 2. 仓库**创建满 1 天**（过滤 PR 前几分钟才建的仓库）。
@@ -113,14 +113,14 @@ CI 的检查顺序是：条目数 → `dsh.bundle` → 仓库年龄 → `awesome
 在条目 yml 里加 `tarball:` 字段：
 
 ```yaml
-tarball: https://github.com/<owner>/dsh-recall/releases/latest/download/dsh-recall.tgz
+tarball: https://github.com/<owner>/dsh-recall-sessions/releases/latest/download/dsh-recall-sessions.tgz
 ```
 
 ⚠️ `latest/download/` 只在请求时解析 `latest`，文件名是照字面取的。
 文件名带版本号的话，你下次发版这个链接就会 404。要么文件名不带版本，要么钉住 tag：
 
 ```yaml
-tarball: https://github.com/<owner>/dsh-recall/releases/download/v0.1.0/dsh-recall-0.1.0.tgz
+tarball: https://github.com/<owner>/dsh-recall-sessions/releases/download/v0.1.0/dsh-recall-sessions-0.1.0.tgz
 ```
 
 ---

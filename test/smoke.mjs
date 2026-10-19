@@ -1,5 +1,5 @@
 /**
- * dsh-recall 自检脚本（零依赖，直接 node test/smoke.mjs）。
+ * dsh-recall-sessions 自检脚本（零依赖，直接 node test/smoke.mjs）。
  *
  * 覆盖：
  *   1. 配置解析与非法值回落
@@ -267,7 +267,7 @@ const digest = renderAutoInjectDigest(scan.sessions, config);
 await check("摘要非空且带标题与警告", () => {
   if (!HAS_DATA) return;
   assert.ok(digest.length > 0, "摘要为空");
-  assert.match(digest, /## 跨会话记忆（dsh-recall 自动注入）/);
+  assert.match(digest, /## 跨会话记忆（dsh-recall-sessions 自动注入）/);
   assert.match(digest, /不可信的历史数据/);
 });
 
@@ -591,7 +591,7 @@ function makeFakeCtx() {
 }
 
 await check("插件导出 name/inject/apply", () => {
-  assert.equal(pluginName, "dsh-recall");
+  assert.equal(pluginName, "dsh-recall-sessions");
   assert.ok(Array.isArray(pluginInject) && pluginInject.includes("systemPrompt"));
   assert.equal(typeof applyPlugin, "function");
 });
@@ -608,7 +608,7 @@ await check("autoInject=true 才注册注入，且 order 正确", () => {
   const { ctx, record } = makeFakeCtx();
   applyPlugin(ctx, { autoInject: true });
   assert.equal(record.contexts.length, 1, "autoInject=true 时应注册提示词上下文");
-  assert.equal(record.contexts[0].name, "dsh-recall:cross-session-memory");
+  assert.equal(record.contexts[0].name, "dsh-recall-sessions:cross-session-memory");
   assert.equal(record.contexts[0].order, 108);
 });
 

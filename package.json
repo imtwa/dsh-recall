@@ -1,5 +1,5 @@
 {
-  "name": "dsh-recall",
+  "name": "dsh-recall-sessions",
   "version": "0.1.0",
   "description": "DeepSeek Harness 跨会话记忆（按需）：列出并加载之前会话干了什么，不自动污染上下文。Cross-session memory for DSH, loaded on demand.",
   "type": "module",
